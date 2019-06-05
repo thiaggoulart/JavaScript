@@ -1,3 +1,3 @@
-let saudacao: string = 'Alô, mundo!';
+let saudacao: string = 'Olá, mundo!';
 console.log(saudacao);
 console.log('Fui modificado!');
