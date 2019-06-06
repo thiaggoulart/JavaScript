@@ -25,8 +25,8 @@ while (i: != 10) {
 
 /*3. Escreva uma função min(x,y)que devolve o menor entre dois números.
 Não use funções auxiliares de Math.Utilize corretamente a declaração
-de tipos nos parâmetros e no resultado da função.
-function menor(x:number, y:number): number{*/
+de tipos nos parâmetros e no resultado da função.*/
+function menor(x:number, y:number): number{
     if(x < y){
         return x;
     }else{
@@ -38,8 +38,8 @@ function menor(x:number, y:number): number{*/
 /*4. Escreva uma função pow(x,y)que calcula o valor de x^y, ou seja, x elevado a potência y. 
 Assuma que os valores de x e y são números inteiros não negativose que x^0=1 
 para qualquer valor de x.Apresente uma versão iterativa e uma versão recursiva para a função.
-Não utilize o operador **.Utilize corretamente a declaração de tipos nos parâmetros e no resultado da função
-function iterativa(x:number, y:number): number{*/
+Não utilize o operador **.Utilize corretamente a declaração de tipos nos parâmetros e no resultado da função*/
+function iterativa(x:number, y:number): number{
     let i:number = 1;
     while(i < y ){
         i++;
@@ -91,10 +91,10 @@ um determinado array contendo números inteiros.Utilize corretamente a declaraç
 e no resultado da função.*/
 
 function frequencia(array: number[]) : Map<number, number>{
-    let contagem = new Map();
+    let contagem = new Map<number,number>();
     for (let valor of array){
         if (contagem.has(valor)){
-            contagem.set(valor,contagem.get(valor)+1);
+            contagem.set(valor, (contagem.get(valor)||0)+1);
         }else{
             contagem.set(valor,1);
         } 
