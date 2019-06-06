@@ -1,8 +1,8 @@
-function area(r: number): number{
+function area(r: number): number {
     return Math.PI * r**2;
 }
 
-function circunferencia(r: number){
+function circunferencia(r: number) {
     return 2 * Math.PI * r;
 }
 
@@ -17,12 +17,12 @@ function potencia(base: number, expoente: number = 2): number {
     return resultado;
 }
 
-function buildName(firstName: string, ...restOfName: string[]){
+function buildName(firstName: string, ...restOfName: string[]) {
     return firstName + " " + restOfName.join(" ");
 }
 console.log(buildName('a','b','c','d'));
 
-const somar = function(x:number, y:number):number{
+const somar = function(x:number, y:number):number {
     return x+y;
 }
 
@@ -31,7 +31,7 @@ console.log(somar(1,1));
 const mult = (x:number, y:number) => x*y;
 console.log(mult(2,4));
 
-function multiplicar(fator: number): (n: number) => number{
+function multiplicar(fator: number): (n: number) => number {
     return (numero => numero * fator);
 }
 
