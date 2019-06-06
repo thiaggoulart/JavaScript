@@ -104,7 +104,7 @@ function frequencia(array: number[]) : Map<number, number>{
 
 function frequencia2(array: number[]): Map<number,number>{
     return array.reduce((contagem, valor) =>
-     contagem.set(valor, contagem.get(valor)! +1), new Map<number,number>());
+    contagem.set(valor, contagem.get(valor)! +1), new Map<number,number>());
 } // versão professor
 
 console.log(frequencia([1,2,1,0,4,2]));
