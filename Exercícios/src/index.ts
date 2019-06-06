@@ -94,7 +94,7 @@ function frequencia(array: number[]) : Map<number, number>{
     let contagem = new Map<number,number>();
     for (let valor of array){
         if (contagem.has(valor)){
-            contagem.set(valor, (contagem.get(valor)||0)+1);
+            contagem.set(valor, contagem.get(valor)!+1);
         }else{
             contagem.set(valor,1);
         } 
