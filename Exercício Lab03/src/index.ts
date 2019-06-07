@@ -3,11 +3,13 @@ as propriedades de um ponto central (coordenadas x, y) e um tamanho de raio.
 Defina métodos para o cálculo da área do círculo e do comprimento da circunferência.
 Escreva um bloco de código para testar a implementação do círculo. */
 class Circulo {
+    
     constructor(
         private _x: number,
         private _y: number,
         private _raio: number
         ){}
+
     get x(): number {
         return this._x;
     }
@@ -51,21 +53,37 @@ b) Escreva um bloco de código para testar a implementação.
 c) Utilize um código para serializar um objeto Cofrinho em JSON e procure 
 entender o formato de string que foi construído.*/
 class Moeda {
+    
     constructor(
-        protected _valor: number,
-        protected _nome: string
+        private _valor: number,
+        private _nome: string
     ){}
-    get valor(): number {
+
+    get valor(): number{
         return this._valor;
     }
-    get nome (): string {
+    get nome(): string{
         return this._nome;
     }
 }
 
 class Cofrinho {
-    constructor(){}
+    
+    private moedas: Moeda[] = [];
     adicionar(m: Moeda): void {
-       
+      this.moedas.push(m); 
+    }
+
+    calcularTotal(): number {
+        let somador:(x: number, y: Moeda) => number = (soma, moeda) => soma + moeda.valor;
+        return this.moedas.reduce(somador, 0);
     }
 }
+
+let cofre: Cofrinho = new Cofrinho();
+cofre.adicionar(new Moeda(1.0, '1 Real'));
+cofre.adicionar(new Moeda(0.5, '50 centavos'));
+cofre.adicionar(new Moeda(0.1, '10 centavos'));
+console.log(cofre.calcularTotal());
+let cofre2 = new Cofrinho();
+console.log(cofre2.calcularTotal());
