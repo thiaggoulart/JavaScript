@@ -25,8 +25,15 @@ import {Cofrinho} from './entidades';
     }
 })();*/
 
-async function salvarCofrinho(Cofre: Cofrinho,nomeArq: string): string{
+function salvarCofrinho(Cofre: Cofrinho,nomeArq: string): string{
     try{
-        let dados = await fs.
+        let dados = fs.writeFile('Cofre.txt','moeda',) =>{
+            if(err !== null) {
+                throw err;
+            }
+            console.log('arquivo escrito com sucesso!')
+        });
+    } catch (error) {
+        console.log(`Erro: ${error.name} - ${error.message}`);
     }
 }
