@@ -1,39 +1,48 @@
 import * as fs from 'fs';
-import {Moeda} from './entidades';
-import {Cofrinho} from './entidades';
+import {Cofrinho, Moeda} from './entidades';
+import {promises} from 'fs'
 
+const fsp = promises; 
 
-/*try{
-    fs.writeFile('dados2.txt','mais um',(err) => {
-        if(err !== null) {
-            throw err;
+export function salvarCofre( cofre: Cofrinho, nomeArq: string): void {
+    const json = JSON.stringify(cofre);
+    fs.writeFile(nomeArq,json, erro => {
+        if(erro) {
+            throw erro;
         }
-        console.log('arquivo escrito com sucesso!');
     });
-    console.log('continuei a execução...');
-} catch (error) {
-    console.log(`Erro: ${error.name} - ${error.message}`);
+}
+
+/*export function lerCofre(nomeArq: string, callback: (erro: Error|null, dados?: Cofrinho) => void): void{
+    return fs.readFile(nomeArq,'utf-8', (erro, dados) => {
+        if (erro){
+               callback(erro);
+        }
+        try{
+            const obj = JSON.parse(dados);
+            const cofre = new Cofrinho ();
+            for(let i=0; i<obj._moedas.length; i++) {
+                cofre.adicionar(new Moeda(obj._moedas[i]._valor,obj._moedas[i]._nome))
+            }
+        } catch (e){
+            callback (e)
+        }
+    });
 }*/
 
-
-/*(async () => {
-    try{                 
-        let dados = await lerArquivoAsync('dados.txt');
-        console.log(dados);
-    } catch(erro){
-        console.log(erro.message);
-    }
-})();*/
-
-function salvarCofrinho(Cofre: Cofrinho,nomeArq: string): string{
-    try{
-        let dados = fs.writeFile('Cofre.txt','moeda',) =>{
-            if(err !== null) {
-                throw err;
+export async function lerCofre(nomeArq: string): Promise<Cofrinho> {
+    return fsp.readFile(nomeArq, 'utf-8')
+    .then(
+        dados => JSON.parse(dados)
+    )
+    .then(
+        obj => {
+            const cofre = new Cofrinho ();
+            for(let i=0; i<obj.moedas.length; i++) {
+                cofre.adicionar(new Moeda(obj.moedas[i]._valor, obj.moedas[i]._nome));
             }
-            console.log('arquivo escrito com sucesso!')
-        });
-    } catch (error) {
-        console.log(`Erro: ${error.name} - ${error.message}`);
-    }
-}
+            return cofre;
+        }
+    );
+}      
+      

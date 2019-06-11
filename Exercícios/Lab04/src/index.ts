@@ -11,3 +11,17 @@ c) Crie um arquivo chamado “index.ts” que cria um novo cofre, adiciona diver
 moedas nele, salva um arquivo e depois lê o arquivo e informa no console o 
 conteúdo do arquivo.*/
 
+import {Cofrinho, Moeda} from "./entidades";
+import{salvarCofre, lerCofre} from "./persistencia";
+
+function main() {
+    const cofre = new Cofrinho;
+    lerCofre('meuCofrinho.json')
+    .then(cofre => console.log(cofre.calcularTotal()))
+    .catch(erro => {
+        console.log('Erro de escrita do arquivo: ');
+        console.log(erro);
+    });
+}
+
+main();
