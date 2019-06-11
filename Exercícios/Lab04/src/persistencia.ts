@@ -28,9 +28,9 @@ export function salvarCofre( cofre: Cofrinho, nomeArq: string): void {
             callback (e)
         }
     });
-}*/
+} errado pq não é async*/
 
-export async function lerCofre(nomeArq: string): Promise<Cofrinho> {
+export async function lerCofreAsync(nomeArq: string): Promise<Cofrinho> {
     return fsp.readFile(nomeArq, 'utf-8')
     .then(
         dados => JSON.parse(dados)
@@ -45,4 +45,17 @@ export async function lerCofre(nomeArq: string): Promise<Cofrinho> {
         }
     );
 }      
-      
+
+export async function lerCofreAsyncAwait (nomeArq:string): Promise<Cofrinho> {
+    const dados = await fsp.readFile(nomeArq, 'utf-8');
+    try {
+        const obj = JSON.parse(dados);
+        const cofre = new Cofrinho ();
+            for(let i=0; i<obj.moedas.length; i++) {
+                cofre.adicionar(new Moeda(obj.moedas[i]._valor, obj.moedas[i]._nome));
+            }
+            return cofre;
+    } catch (erro) {
+        throw erro;
+    }
+}

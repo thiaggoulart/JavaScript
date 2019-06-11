@@ -12,16 +12,24 @@ moedas nele, salva um arquivo e depois lê o arquivo e informa no console o
 conteúdo do arquivo.*/
 
 import {Cofrinho, Moeda} from "./entidades";
-import{salvarCofre, lerCofre} from "./persistencia";
+import{salvarCofre, lerCofreAsync, lerCofreAsyncAwait} from "./persistencia";
 
-function main() {
+async function main() {
     const cofre = new Cofrinho;
-    lerCofre('meuCofrinho.json')
+    lerCofreAsync('meuCofrinho.json')
     .then(cofre => console.log(cofre.calcularTotal()))
     .catch(erro => {
         console.log('Erro de escrita do arquivo: ');
         console.log(erro);
     });
+
+    try{
+        const cofre = await lerCofreAsyncAwait('meuCofrinho.json');
+        console.log(cofre.calcularTotal());
+    }catch (erro) {
+        console.log('Erro de escrita do arquivo: ');
+        console.log(erro);
+    }
 }
 
 main();
