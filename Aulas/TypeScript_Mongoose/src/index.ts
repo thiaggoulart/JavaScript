@@ -1,4 +1,4 @@
-import {connect, Schema} from 'mongoose';
+import {connect, Schema, model} from 'mongoose';
 
 async function Main() {
     try{
@@ -10,6 +10,7 @@ async function Main() {
             nome: {type: String, required: true, minlength: 1, maxlength: 50},
             idade: {type: Number, required: true, minlength: 0}
         });
+        const pessoaModelo = model('PessoaModel', pessoaEsquema, 'pessoas');
 
         if(cliente && cliente.connection) {
             cliente.connection.close();
