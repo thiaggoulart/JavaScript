@@ -52,7 +52,7 @@ para implementar a coleção de moedas na classe Cofrinho.
 b) Escreva um bloco de código para testar a implementação.
 c) Utilize um código para serializar um objeto Cofrinho em JSON e procure 
 entender o formato de string que foi construído.*/
-class Moeda {
+/*class Moeda {
     
     constructor(
         private _valor: number,
@@ -67,7 +67,7 @@ class Moeda {
     }
 }
 
-/*class Cofrinho {
+class Cofrinho {
     
     private moedas: Moeda[] = [];
     adicionar(m: Moeda): void {
@@ -94,7 +94,7 @@ console.log(cofre2.calcularTotal());*/
 • Método que retorna um mapa/dicionário com a frequência (o número de moedas) de cada moeda
 existente (1 centavo, 5 centavos, 10 centavos, 25 centavos, 50 centavos, 1 real) no cofrinho.*/
 
-class Cofrinho {
+/*class Cofrinho {
     
     private moedas: Moeda[] = [];
     adicionar(m: Moeda): void {
@@ -153,4 +153,88 @@ cofre.adicionar(new Moeda(0.5, '50 centavos'));
 cofre.adicionar(new Moeda(0.1, '10 centavos'));
 console.log(cofre.menorMoeda());
 console.log(cofre.instancia());
-console.log(cofre.frequencia());
+console.log(cofre.frequencia());*/
+
+/* Seja a seguinte hierarquia de herança representada em um diagrama e classes UML:
+a)Implemente as classes em TypeScript. Para o cálculo do valor da mensalidade utilizeas seguintes
+informações: Esta empresa de seguros cobra uma mensalidade correspondente a 10% do salário se o
+cliente tem menos de 60 anos e 15% se o cliente tem 60 anos ou mais, no caso de clientes que são
+pessoa física. Para pessoas jurídicas é cobrada uma mensalidade variável, calculada através de
+negociações como cliente.
+b)Implemente uma classe CadastroClientes para armazenar o cadastro de clientes da empresa de seguros.
+Apresente métodos para adicionar um cliente ao cadastro e retornar uma string contendo a listagem de
+todos os clientes, mostrando seu nome e o valor da mensalidade a ser paga.*/
+
+
+abstract class Cliente{
+    constructor(private _nome: string){
+
+    }
+    
+    get nome(): string{
+        return this._nome;
+    }
+
+    abstract getMensalidade(): number;
+
+}
+
+class ClienteFisico extends Cliente{
+    constructor(nome: string, private _idade: number, private _salario: number){
+        super(nome);
+    }
+
+    get idade(): number{
+        return this._idade;
+    }
+
+    set idade(idade: number){
+        this._idade = idade;
+    }
+
+    get salario(): number{
+        return this._salario;
+    }
+    
+    set salario(salario: number){
+        this._salario = salario;
+    }
+
+    getMensalidade(): number{
+        if(this._idade < 60){
+            return 0.1*this._salario;
+        }
+        else{
+            return 0.15*this._salario;
+        }
+    }
+}
+
+class ClienteJuridico extends Cliente{
+    constructor(nome: string, private _mensalidade: number){
+        super(nome);
+    }
+
+    set mensalidade(mensalidade: number){
+        this._mensalidade = mensalidade;
+    }
+
+    getMensalidade(): number{
+        return this._mensalidade;
+    }
+}
+
+class CadastroClientes{
+    private clientes: Cliente[] = [];
+
+    adicionar(c: Cliente): void{
+
+        this.clientes.push(c);
+    }
+
+    imprimirClientes(): void{
+        for(let i = 1; i < this.clientes.length; i++){
+            console.log(`Nome do cliente: ${this.clientes[i].nome}, Mensalidade:` + this.clientes[i].getMensalidade);
+        }
+    }
+}
