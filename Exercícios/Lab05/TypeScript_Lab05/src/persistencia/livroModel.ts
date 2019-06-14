@@ -3,7 +3,9 @@ import { Document, model, Schema, SchemaTypes, Model } from "mongoose";
 
 interface LivroDocument extends Livro, Document {}
 
-export const LivroModel: Model<LivroDocument> = model<LivroDocument>('Livro', new Schema({
+const LivroSchema = new Schema({
     titulo: { type: String, required: true },
     autores: [{ type: SchemaTypes.ObjectId, ref: 'Autor' }]
-}), 'livros');
+});
+
+export const LivroModel: Model<LivroDocument> = model<LivroDocument>('Livro', LivroSchema, 'livros');

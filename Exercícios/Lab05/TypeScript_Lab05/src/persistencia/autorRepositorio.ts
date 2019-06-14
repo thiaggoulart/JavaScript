@@ -6,7 +6,7 @@ import { ObjectID, ObjectId } from "bson";
 export class AutorRepositorio {
     static async criar(autor: Autor): Promise<Autor> {
         let novoAutor = await AutorModel.create(autor);
-        return novoAutor.save();
+        return novoAutor;
     }
 
     static async buscar(): Promise<Autor[]> {

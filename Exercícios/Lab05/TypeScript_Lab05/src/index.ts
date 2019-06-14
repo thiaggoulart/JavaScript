@@ -1,4 +1,5 @@
 import {connect} from 'mongoose';
+import {LivroRepositorio} from './persistencia/livroRepositorio';
 import { AutorRepositorio } from './persistencia/autorRepositorio';
 import { ObjectId } from 'bson';
 
@@ -12,9 +13,9 @@ async function main() {
         let a1 = await AutorRepositorio.criar({primeiro_nome: 'John', ultimo_nome: 'Doe'});
         console.log(`Autor inserido: ${a1}`);
         let a2 = await AutorRepositorio.criar({primeiro_nome: 'Mary', ultimo_nome: 'Doe'});
-        console.log(`Autor inserido: ${a2}`);
+        console.log(`Autor inserido: ${a2}`);*/
         
-        console.log('Buscando autores...');
+        /*console.log('Buscando autores...');
         let autores = await AutorRepositorio.buscar();
         autores.forEach(autor => console.log(autor));*/
 
@@ -26,10 +27,39 @@ async function main() {
         let autores = await AutorRepositorio.primeiroNome('Mary');
         autores.forEach(autor => console.log(autor));*/
 
-        console.log('Alterando último nome:');
+       /* console.log('Alterando último nome:');
         let autores = await AutorRepositorio.alterar(new ObjectId("5d03aac7b1c0391e7c4360d9"),'Goulart');
-        console.log(autores);
+        console.log(autores);*/
+
+        /*console.log('Adicionando Livro...');
+        let l1 = await LivroRepositorio.criar({
+            titulo: 'Node.js com TypeScript',
+            autores: [a1,a2]
+        });
+
+        let l2 = await LivroRepositorio.criar({
+            titulo: 'Outro livro',
+            autores: []
+        });
+        console.log(l2);*/
         
+        /*let l3 = await LivroRepositorio.criar({
+            titulo: 'Outro livro',
+            autores: [{primeiro_nome: 'Eu', ultimo_nome: 'Eu'}]
+        });
+        console.log(l3);*/
+
+        /*console.log('Buscando livros...');
+        let livros = await LivroRepositorio.buscar();
+        livros.forEach(l => {
+            console.log(`Autores: ${l.autores.map(a => a.primeiro_nome)}`);
+        });*/
+
+        console.log('Buscando livros...');
+        let livros = await LivroRepositorio.buscarPorAutor(new ObjectId("5d03ddd3d9f3311f24d7ad85"));
+        livros.forEach(l => {
+            console.log(l.titulo);
+        });
 
         if (cliente && cliente.connection) {
             cliente.connection.close();
