@@ -16,4 +16,8 @@ export class LivroRepositorio{
     static async buscarPorAutor(id: ObjectId): Promise<Livro[]>{
         return LivroModel.find().populate('autores', AutorModel).where('autores').equals(id);
     }
+
+    static async buscarPorId(id: string): Promise<Livro|null>{
+        return LivroModel.findById(id).exec();
+    }
 }

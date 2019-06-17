@@ -2,6 +2,7 @@ import {connect} from 'mongoose';
 import {LivroRepositorio} from './persistencia/livroRepositorio';
 import { AutorRepositorio } from './persistencia/autorRepositorio';
 import { ObjectId } from 'bson';
+import { emprestarLivro } from './persistencia/negocio/negocio';
 
 async function main() {
     const url = 'mongodb://localhost:27017/biblioteca';
@@ -55,11 +56,16 @@ async function main() {
             console.log(`Autores: ${l.autores.map(a => a.primeiro_nome)}`);
         });*/
 
-        console.log('Buscando livros...');
+       /* console.log('Buscando livros...');
         let livros = await LivroRepositorio.buscarPorAutor(new ObjectId("5d03ddd3d9f3311f24d7ad85"));
         livros.forEach(l => {
             console.log(l.titulo);
-        });
+        });*/
+
+        console.log('Realizar empréstimos...');
+        const emprestimo = await emprestarLivro('5d03ddd4d9f3311f24d7ad87');
+        console.log(emprestimo);
+        
 
         if (cliente && cliente.connection) {
             cliente.connection.close();
