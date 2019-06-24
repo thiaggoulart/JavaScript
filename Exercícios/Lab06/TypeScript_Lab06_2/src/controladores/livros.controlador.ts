@@ -2,8 +2,16 @@ import{Request, Response} from 'express';
 import * as negocio from '../negocio/negocio';
 import { NextFunction } from 'connect';
 
+export async function getLivros(req:Request, res:Response, next:NextFunction) {
+    try {
+        const livros = await negocio.todosLivros();
+        res.json(livros);
+    } catch (error) {
+        next(error);
+    }
+}
 
-export async function getLivros(req: Request, res: Response, next: NextFunction) {
+export async function getLivro(req: Request, res: Response, next: NextFunction) {
     try{
         const id = req.params.id;
         const livro = await negocio.consultarLivroPorId(id);
