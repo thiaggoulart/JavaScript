@@ -1,0 +1,15 @@
+<h1>Heróis</h1>
+
+<h2>{{hero.name | uppercase}}</h2>
+<div>
+  <span>id: </span>{{hero.id}}
+</div>
+
+<br>
+<br>
+
+<ul>
+  <li *ngFor='let myHero of heroes'>
+    <span>name: </span>{{myHero.name}}
+  </li>
+</ul>
