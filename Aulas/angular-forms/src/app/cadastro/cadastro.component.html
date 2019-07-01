@@ -1,0 +1,21 @@
+<h1>cadastro de pessoas</h1>
+
+<form #cadastro="ngForm" (submit)="onSubmit()">
+    <div>
+        <label for='nome' >Nome</label>
+        <input type="text" id = 'nome' name="nome" #nome ="ngModel"
+        required maxlength="60"
+        [(ngModel)]="pessoa.nome"
+        >
+        <div [hidden]="nome.valid || nome.pristine">Nome é obrigatório</div>
+    </div>
+    <div>
+        <label for="idade">Idade</label>
+        <input type="number" id='idade' name="idade"
+         required min="1"
+         [(ngModel)] = "pessoa.idade"
+         >
+    </div>
+    <button type="submit" [disabled]="!cadastro.valid">Enviar</button>
+</form>
+TESTE:{{dados}}
