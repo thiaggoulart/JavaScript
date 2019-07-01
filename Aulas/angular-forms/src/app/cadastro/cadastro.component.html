@@ -1,6 +1,6 @@
 <h1>cadastro de pessoas</h1>
 
-<form #cadastro="ngForm" (submit)="onSubmit()">
+<form #cadastro="ngForm" (ngSubmit)="onSubmit()">
     <div>
         <label for='nome' >Nome</label>
         <input type="text" id = 'nome' name="nome" #nome ="ngModel"

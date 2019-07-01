@@ -1,0 +1,21 @@
+<h1>Cadastro Pessoa</h1>
+
+<form [formGroup] = "cadastro" (ngSubmit)= "onSubmit()">
+  <div>
+    <label for="nome">Nome</label>
+    <input type="text" id="nome"
+    required maxlength="60"
+    formControlName="nome"
+    >
+  </div>
+  <div>
+      <label>Idade</label>
+      <input type="number" id="Idade"
+      required min=1
+      formControlName="idade"
+      >
+  </div>
+  <button type="submit" [disabled]="!cadastro.valid">Enviar</button>
+</form>
+TESTE:{{dados}};
+0

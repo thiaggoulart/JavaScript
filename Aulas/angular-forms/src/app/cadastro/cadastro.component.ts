@@ -19,6 +19,6 @@ export class CadastroComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log("Formulário submetido!");
+    console.log("Formulário submetido");
   }
 }

@@ -1,0 +1,3 @@
+Repositório site Angular: https://github.com/spring-petclinic/spring-petclinic-angular
+Servidor REST no Azure (documentação): http://springpetclinicrestapi.westus.azurecontainer.io:9966/petclinic/swagger-ui.html
+Servidor REST no Azure (url base): http://springpetclinicrestapi.westus.azurecontainer.io:9966/petclinic
