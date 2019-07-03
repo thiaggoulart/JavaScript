@@ -3,7 +3,7 @@
 <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="id">
     <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    <mat-cell *matCellDef="let element"> <a routerLink="/editar/{{element.id}}">{{element.id}}</a> </mat-cell>
   </ng-container>
   <ng-container matColumnDef="userid">
     <mat-header-cell *matHeaderCellDef> UserId </mat-header-cell>
