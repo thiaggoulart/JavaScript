@@ -9,6 +9,7 @@ import { TodoListarComponent } from './todo-listar/todo-listar.component';
 import { TodoFiltrarComponent } from './todo-filtrar/todo-filtrar.component';
 import { TodoEditarComponent } from './todo-editar/todo-editar.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -26,7 +27,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    MatTableModule
+    MatTableModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

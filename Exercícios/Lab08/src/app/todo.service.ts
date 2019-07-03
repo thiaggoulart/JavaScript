@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { UserService } from './user.service';
 import { Todo } from './todo';
@@ -27,6 +27,15 @@ export class TodoService {
   buscarPorUserId(userId: number): Observable<Todo[]> {
     return this.http.get<Todo[]>(`${this.urlBase}/${userId}`).pipe(
       map(res => res || []),
+      catchError(this.tratadorErros)
+    );
+  }
+
+  cabecalhos = new HttpHeaders().set('Content-type','application/json');
+
+  inserir(todo: Todo): Observable<Todo> {
+    return this.http.post<Todo>(this.urlBase,todo,{headers:this.cabecalhos}).pipe(
+      map(res => res || {} as Todo),
       catchError(this.tratadorErros)
     );
   }
