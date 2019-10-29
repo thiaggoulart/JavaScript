@@ -32,6 +32,6 @@
   },
   "dependencies": {
     "mongodb": "^3.2.7",
-    "mongoose": "^5.5.15"
+    "mongoose": "^5.7.5"
   }
 }
